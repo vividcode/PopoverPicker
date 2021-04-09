@@ -13,6 +13,10 @@
 		84590491262078BA00BCA6BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8459048F262078BA00BCA6BA /* Main.storyboard */; };
 		84590493262078BB00BCA6BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84590492262078BB00BCA6BA /* Assets.xcassets */; };
 		84590496262078BB00BCA6BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84590494262078BB00BCA6BA /* LaunchScreen.storyboard */; };
+		8459049F262078CE00BCA6BA /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459049E262078CE00BCA6BA /* PopoverViewController.swift */; };
+		845904A22620790600BCA6BA /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845904A12620790600BCA6BA /* ListItem.swift */; };
+		845904A82620791D00BCA6BA /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845904A72620791D00BCA6BA /* FontCell.swift */; };
+		845904AB2620792D00BCA6BA /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845904AA2620792D00BCA6BA /* ColorCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		84590492262078BB00BCA6BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84590495262078BB00BCA6BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84590497262078BB00BCA6BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8459049E262078CE00BCA6BA /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		845904A12620790600BCA6BA /* ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
+		845904A72620791D00BCA6BA /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U0010FontCell.swift"; sourceTree = "<group>"; };
+		845904AA2620792D00BCA6BA /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 		84590488262078BA00BCA6BA /* PopoverPicker */ = {
 			isa = PBXGroup;
 			children = (
+				845904A12620790600BCA6BA /* ListItem.swift */,
 				84590489262078BA00BCA6BA /* AppDelegate.swift */,
 				8459048B262078BA00BCA6BA /* SceneDelegate.swift */,
 				8459048D262078BA00BCA6BA /* ViewController.swift */,
@@ -63,6 +72,9 @@
 				84590492262078BB00BCA6BA /* Assets.xcassets */,
 				84590494262078BB00BCA6BA /* LaunchScreen.storyboard */,
 				84590497262078BB00BCA6BA /* Info.plist */,
+				8459049E262078CE00BCA6BA /* PopoverViewController.swift */,
+				845904A72620791D00BCA6BA /* FontCell.swift */,
+				845904AA2620792D00BCA6BA /* ColorCell.swift */,
 			);
 			path = PopoverPicker;
 			sourceTree = "<group>";
@@ -77,6 +89,7 @@
 				84590482262078BA00BCA6BA /* Sources */,
 				84590483262078BA00BCA6BA /* Frameworks */,
 				84590484262078BA00BCA6BA /* Resources */,
+				845904AE2620903600BCA6BA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -132,13 +145,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		845904AE2620903600BCA6BA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "#!/bin/bash";
+			shellScript = "bash swiftlint.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84590482262078BA00BCA6BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845904A22620790600BCA6BA /* ListItem.swift in Sources */,
+				845904AB2620792D00BCA6BA /* ColorCell.swift in Sources */,
+				8459049F262078CE00BCA6BA /* PopoverViewController.swift in Sources */,
 				8459048E262078BA00BCA6BA /* ViewController.swift in Sources */,
 				8459048A262078BA00BCA6BA /* AppDelegate.swift in Sources */,
+				845904A82620791D00BCA6BA /* FontCell.swift in Sources */,
 				8459048C262078BA00BCA6BA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
