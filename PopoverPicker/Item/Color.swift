@@ -1,50 +1,11 @@
 //
-//  ListItem.swift
-//  Reader
+//  Color.swift
+//  PopoverPicker
 //
-//  Created by Admin on 4/8/21.
-//  Copyright © 2021 iPhoneGameZone. All rights reserved.
+//  Created by Admin on 9/9/21.
 //
 
-import Foundation
 import UIKit
-
-protocol ListItem {
-	associatedtype T
-	associatedtype U: UITableViewCell
-	var representation: String { get }
-	var selection: T { get }
-
-	func getTableViewCell(tableView: UITableView) -> U?
-	static func registerTableViewCell(tableView: UITableView)
-	func updateUI(cell: UITableViewCell)
-}
-
-extension UIFont: ListItem {
-	typealias T = UIFont
-	typealias U = FontCell
-
-	var representation: String {
-		return self.familyName
-	}
-
-	var selection: UIFont {
-		return UIFont.init(name: representation, size: 17.0) ?? UIFont.systemFont(ofSize: 17)
-	}
-
-	func getTableViewCell(tableView: UITableView) -> U? {
-		return tableView.dequeueReusableCell(withIdentifier: FontCell.reuseIdentifier) as? FontCell
-	}
-
-	static func registerTableViewCell(tableView: UITableView) {
-		tableView.register(FontCell.classForCoder(), forCellReuseIdentifier: FontCell.reuseIdentifier)
-	}
-
-	func updateUI(cell: UITableViewCell) {
-		cell.textLabel?.font = self
-		cell.textLabel?.text = self.representation
-	}
-}
 
 extension UIColor: ListItem {
 	typealias T = UIColor
@@ -56,19 +17,6 @@ extension UIColor: ListItem {
 
 	var selection: UIColor {
 		return UIColor(hex: representation) ?? UIColor.white
-	}
-
-	func getTableViewCell(tableView: UITableView) -> U? {
-		return tableView.dequeueReusableCell(withIdentifier: ColorCell.reuseIdentifier) as? ColorCell
-	}
-
-	static func registerTableViewCell(tableView: UITableView) {
-		tableView.register(ColorCell.classForCoder(), forCellReuseIdentifier: ColorCell.reuseIdentifier)
-	}
-
-	func updateUI(cell: UITableViewCell) {
-		cell.contentView.backgroundColor = self.withAlphaComponent(0.7)
-		cell.textLabel?.text = self.representation
 	}
 }
 

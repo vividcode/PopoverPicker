@@ -13,6 +13,16 @@ class PopoverViewController<T: ListItem>: UIViewController, UITableViewDataSourc
 	var listOfItems  = [T]()
 	var selectClosure: ((T) -> Void)?
 
+	let cellMap: [AnyHashable: ListItemDisplay.Type] = {
+		let k1: HashableType = HashableType<UIFont>(UIFont.self)
+		let k2: HashableType = HashableType<UIColor>(UIColor.self)
+		let v1: FontCell.Type = FontCell.self
+		let v2: ColorCell.Type = ColorCell.self
+
+		let cm = [k1: v1, k2: v2] as! [AnyHashable: ListItemDisplay.Type]
+		return cm
+	}()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.createTableView()
@@ -25,7 +35,9 @@ class PopoverViewController<T: ListItem>: UIViewController, UITableViewDataSourc
 			self.tableView.delegate = self
 		}
 		self.view.addSubview(self.tableView)
-		T.registerTableViewCell(tableView: self.tableView)
+
+		let cellClass = self.cellMap[HashableType<T>(T.self)]
+		self.tableView.register((cellClass as! UITableViewCell.Type), forCellReuseIdentifier: cellClass!.reuseId)
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -43,9 +55,10 @@ class PopoverViewController<T: ListItem>: UIViewController, UITableViewDataSourc
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let listItem = self.listOfItems[indexPath.row]
-		let cell = listItem.getTableViewCell(tableView: tableView)
-		listItem.updateUI(cell: cell!)
-		return cell!
+		let cellClass = self.cellMap[HashableType<T>(T.self)]
+		let cell = tableView.dequeueReusableCell(withIdentifier: cellClass!.reuseId) as? ListItemDisplay
+		cell!.updateUI(listItem: listItem)
+		return cell as! UITableViewCell
 	}
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
